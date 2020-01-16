@@ -1,0 +1,97 @@
+<%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
+
+<div class="container-fluid scenario" id="scenario">
+  <div class="container">
+    <% _.each(session, function (session) { %>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/welcome">Tablica</a></li>
+        <li class="breadcrumb-item"><a href="/session/list">Sesje</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><%= session.name %></li>
+      </ol>
+    </nav>
+    <div class="jumbotron">
+      <h1 class="display-4"><%= session.name %></h1>
+      <p class="lead"></p>
+    </div>
+
+    <% if (session.players.length > 0 ) { %>
+    <div class="card" style="width: 100%;">
+      <div class="card-header">
+        <h5 class="card-title">Gracze</h5>
+        <h6 class="card-subtitle mb-2 text-muted"></h6>
+      </div>
+      <ul class="list-group list-group-flush">
+        <% _.each(session.players, function (player) { %>
+        <li class="list-group-item">
+          <%= player.fullName %> (<%= player.emailAddress %>)
+        </li>
+        <% }) %>
+      </ul>
+    </div>
+    <% } else { %>
+    <h2>Nie ma przypisanych jeszcze graczy do sesji. :(</h2>
+    <hr />
+    <% } %>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addPlayersToSessionModal">
+      Przypisz graczy do sesji
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addPlayersToSessionModal" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h5 class="modal-title" id="exampleModalLabel">Zaproś graczy do sesji</h5>
+          </div>
+          <div class="modal-body">
+            <ul class="list-group">
+              <% _.each(users, function (user) { %>
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col col-8">
+                    <%= user.fullName %> (<%= user.emailAddress %>)
+                  </div>
+                  <div class="col col-4">
+                    <button type="button" class="btn btn-primary btn-block addPlayersToSessionButton"
+                      data_user_id="<%= user.id %>" data_session_id="<%= session.id %>">
+                      Zaproś do sesji
+                    </button>
+                  </div>
+                </div>
+              </li>
+              <% }) %>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% if (session.games.length > 0 ) { %>
+    <div class="card" style="width: 100%;">
+      <div class="card-header">
+        <h5 class="card-title">Scenariusze</h5>
+        <h6 class="card-subtitle mb-2 text-muted"></h6>
+      </div>
+      <ul class="list-group list-group-flush">
+        <% _.each(session.games, function (game) { %>
+        <li class="list-group-item">
+        </li>
+        <% }) %>
+      </ul>
+    </div>
+    <% } else { %>
+    <h2>Nie ma przypisanych jeszcze scenariuszy do sesji. :(</h2>
+    <% } %>
+  </div>
+  <% }) %>
+</div>
