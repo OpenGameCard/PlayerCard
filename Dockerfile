@@ -7,4 +7,4 @@ RUN npm install
 COPY application .
 EXPOSE 1337
 
-CMD [ "npm", "start"]
+CMD [ "sails", "lift"]
