@@ -1,0 +1,27 @@
+{
+  "singleLinePerSelector": false,
+  "singleLinePerProperty": false,
+  "zeroUnit": false,
+  "idSelector": false,
+  "propertyOrdering": false,
+  "spaceAroundBang": false,
+  "fileExtensions": [".less", ".css"],
+  "excludedFiles": ["vendor.less"],
+  "importPath": false,
+  "borderZero": false,
+  "hexLength": false,
+  "hexNotation": false,
+  "newlineAfterBlock": false,
+  "spaceBeforeBrace": {
+    "style": "one_space"
+  },
+  "spaceAfterPropertyName": false,
+  "spaceAfterPropertyColon": {
+    "enabled": true,
+    "style": "one_space"
+  },
+  "maxCharPerLine": false,
+  "emptyRule": false,
+  "importantRule": true,
+  "qualifyingElement": false
+}
