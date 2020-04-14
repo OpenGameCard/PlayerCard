@@ -1,43 +1,43 @@
 <%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
 
 <div class="container-fluid scenario" id="scenario">
-  <div class="container">
+    <div class="container">
 
-    <% _.each(game, function (game) { %>
+        <% _.each(game, function (game) { %>
 
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/welcome">Tablica</a></li>
-        <li class="breadcrumb-item"><a href="/game/list">Scenariusze</a></li>
-        <li class="breadcrumb-item active" aria-current="page"><%= game.title %></li>
-      </ol>
-    </nav>
-    <div class="jumbotron">
-      <h1 class="display-4"><%= game.title %></h1>
-      <p class="lead"></p>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/welcome">Tablica</a></li>
+                    <li class="breadcrumb-item"><a href="/game/list">Scenariusze</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><%= game.title %></li>
+                </ol>
+            </nav>
+            <div class="jumbotron">
+                <h1 class="display-4"><%= game.title %></h1>
+                <p class="lead"></p>
+            </div>
+
+            <div class="card" style="width: 100%;">
+                <div class="card-header">
+                    <h5 class="card-title">Mapy</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Ilość map: <%= game.maps.length %></h6>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <% _.each(game.maps, function (map) { %>
+                        <li class="list-group-item">
+                            <a href="/game/show/<%= game.id %>/map/<%= map.id %>/show"><%= map.name %></a>
+                        </li>
+                    <% }) %>
+                </ul>
+
+
+                <div class="card-body">
+                    <a href="/game/show/<%= game.id %>/map/new">Dodaj nową mapę dla scenariusza</a>
+                </div>
+            </div>
+
     </div>
 
-    <div class="card" style="width: 100%;">
-      <div class="card-header">
-        <h5 class="card-title">Mapy</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Ilość map: <%= game.maps.length %></h6>
-      </div>
-      <ul class="list-group list-group-flush">
-        <% _.each(game.maps, function (map) { %>
-        <li class="list-group-item">
-          <a href="/game/show/<%= game.id %>/map/<%= map.id %>/show"><%= map.name %></a>
-        </li>
-        <% }) %>
-      </ul>
-
-
-      <div class="card-body">
-        <a href="/game/show/<%= game.id %>/map/new">Dodaj nową mapę dla scenariusza</a>
-      </div>
-    </div>
-
-  </div>
-
-  <% }) %>
+    <% }) %>
 
 </div>

@@ -15,11 +15,11 @@ module.exports = {
   show: async function (req, res) {
 
     var maps = await Maps.find({
-        where: {
-          id: req.params.mapId,
-        },
-        limit: 1
-      })
+      where: {
+        id: req.params.mapId,
+      },
+      limit: 1
+    })
       .populate('pawns')
       .populate('tiles');
 

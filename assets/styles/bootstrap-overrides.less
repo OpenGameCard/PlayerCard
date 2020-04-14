@@ -8,6 +8,7 @@
 * {
   box-sizing: border-box;
 }
+
 // lesshint-enable
 
 img {
@@ -21,9 +22,10 @@ img {
 
 // Custom link styles within bodies of text
 h1, h2, h3, h4, h5, h6, p, li, blockquote, label {
-  >a:not(.btn), small >a:not(.btn) {
+  > a:not(.btn), small > a:not(.btn) {
     color: @brand;
     border-bottom: 1px solid @text-normal;
+
     &:hover {
       text-decoration: none;
       color: @text-normal;
@@ -39,26 +41,30 @@ blockquote {
 // Custom modal styles
 .modal-backdrop {
   background-color: @accent-white;
+
   &.show {
     opacity: 0.95;
   }
 }
+
 .modal {
-  -webkit-overflow-scrolling: touch;//« makes this actually scrollable on certain phones
+  -webkit-overflow-scrolling: touch; //« makes this actually scrollable on certain phones
   .petticoat {
     position: fixed;
     width: 100%;
-    height: 75px;// should cover topbar
+    height: 75px; // should cover topbar
     z-index: 50;
     left: 0px;
     top: 0px;
     background-color: @accent-white;
   }
+
   .modal-dialog {
     z-index: 100;
     position: relative;
     max-width: 700px;
   }
+
   .modal-content {
     max-width: 700px;
     border-radius: 0px;
@@ -67,6 +73,7 @@ blockquote {
     padding-bottom: 50px;
     padding-left: 25px;
     padding-right: 25px;
+
     .modal-header {
       border-bottom: none;
       display: block;
@@ -76,6 +83,7 @@ blockquote {
       padding-left: 0px;
       padding-right: 0px;
       padding-top: 0px;
+
       .modal-close-button {
         .btn-reset();
         width: 32px;
@@ -89,19 +97,23 @@ blockquote {
         background-repeat: no-repeat;
         background-position: center;
         opacity: 0.8;
+
         &:hover {
           opacity: 1;
         }
       }
+
       .modal-title {
         font-weight: @bold;
       }
+
       .modal-intro {
         margin-left: auto;
         margin-right: auto;
         color: @text-muted;
         margin-bottom: 20px;
       }
+
       hr {
         margin-top: 25px;
         margin-left: auto;
@@ -112,11 +124,13 @@ blockquote {
         border-top: 2px solid @brand;
       }
     }
+
     .modal-body {
       padding-top: 10px;
       padding-bottom: 10px;
       padding-left: 0px;
       padding-right: 0px;
+
       .section-heading {
         margin-top: 25px;
         padding-bottom: 10px;
@@ -124,6 +138,7 @@ blockquote {
         border-bottom: 1px solid @border-lt-gray;
       }
     }
+
     .modal-footer {
       padding-top: 25px;
       padding-bottom: 0px;
@@ -131,6 +146,7 @@ blockquote {
       padding-right: 0px;
       border-top: 1px solid @border-lt-gray;
       margin-top: 10px;
+
       &.no-border {
         border-top: 0px;
         padding-top: 10px;
@@ -138,6 +154,7 @@ blockquote {
       }
     }
   }
+
   @media screen and (max-width: 600px) {
     .modal-content {
       .modal-header {

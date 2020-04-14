@@ -26,7 +26,7 @@ module.exports = function defineCustomHook(sails) {
         let suffix = '';
         if (_.contains(['silly'], sails.config.log.level)) {
           suffix =
-`
+            `
 > Tip: To exclude sensitive credentials from source control, use:
 > • config/local.js (for local development)
 > • environment variables (for production)
@@ -58,7 +58,7 @@ module.exports = function defineCustomHook(sails) {
         }
 
         sails.log.verbose(
-`Some optional settings have not been configured yet:
+          `Some optional settings have not been configured yet:
 ---------------------------------------------------------------------
 ${problems.join('\n')}
 
@@ -75,7 +75,7 @@ will be disabled and/or hidden in the UI.
 
       // After "sails-hook-organics" finishes initializing, configure Stripe
       // and Mailgun packs with any available credentials.
-      sails.after('hook:organics:loaded', ()=>{
+      sails.after('hook:organics:loaded', () => {
 
         sails.helpers.stripe.configure({
           secret: sails.config.custom.stripeSecret
@@ -108,7 +108,7 @@ will be disabled and/or hidden in the UI.
       before: {
         '/*': {
           skipAssets: true,
-          fn: async function(req, res, next){
+          fn: async function (req, res, next) {
 
             var url = require('url');
 
@@ -149,18 +149,23 @@ will be disabled and/or hidden in the UI.
             var configuredBaseHostname;
             try {
               configuredBaseHostname = url.parse(sails.config.custom.baseUrl).host;
-            } catch (unusedErr) { /*…*/}
+            } catch (unusedErr) { /*…*/
+            }
             if ((sails.config.environment === 'staging' || sails.config.environment === 'production') && !req.isSocket && req.method === 'GET' && req.hostname !== configuredBaseHostname) {
-              sails.log.info('Redirecting GET request from `'+req.hostname+'` to configured expected host (`'+configuredBaseHostname+'`)...');
-              return res.redirect(sails.config.custom.baseUrl+req.url);
+              sails.log.info('Redirecting GET request from `' + req.hostname + '` to configured expected host (`' + configuredBaseHostname + '`)...');
+              return res.redirect(sails.config.custom.baseUrl + req.url);
             }//•
 
             // No session? Proceed as usual.
             // (e.g. request for a static asset)
-            if (!req.session) { return next(); }
+            if (!req.session) {
+              return next();
+            }
 
             // Not logged in? Proceed as usual.
-            if (!req.session.userId) { return next(); }
+            if (!req.session.userId) {
+              return next();
+            }
 
             // Otherwise, look up the logged-in user.
             var loggedInUser = await User.findOne({
@@ -171,7 +176,7 @@ will be disabled and/or hidden in the UI.
             // wipe the user id from the requesting user agent's session,
             // and then send the "unauthorized" response.
             if (!loggedInUser) {
-              sails.log.warn('Somehow, the user record for the logged-in user (`'+req.session.userId+'`) has gone missing....');
+              sails.log.warn('Somehow, the user record for the logged-in user (`' + req.session.userId + '`) has gone missing....');
               delete req.session.userId;
               return res.unauthorized();
             }
@@ -193,19 +198,19 @@ will be disabled and/or hidden in the UI.
             // to the current timestamp.
             //
             // (Note: As an optimization, this is run behind the scenes to avoid adding needless latency.)
-            var MS_TO_BUFFER = 60*1000;
+            var MS_TO_BUFFER = 60 * 1000;
             var now = Date.now();
             if (loggedInUser.lastSeenAt < now - MS_TO_BUFFER) {
               User.updateOne({id: loggedInUser.id})
-              .set({ lastSeenAt: now })
-              .exec((err)=>{
-                if (err) {
-                  sails.log.error('Background task failed: Could not update user (`'+loggedInUser.id+'`) with a new `lastSeenAt` timestamp.  Error details: '+err.stack);
-                  return;
-                }//•
-                sails.log.verbose('Updated the `lastSeenAt` timestamp for user `'+loggedInUser.id+'`.');
-                // Nothing else to do here.
-              });//_∏_  (Meanwhile...)
+                .set({lastSeenAt: now})
+                .exec((err) => {
+                  if (err) {
+                    sails.log.error('Background task failed: Could not update user (`' + loggedInUser.id + '`) with a new `lastSeenAt` timestamp.  Error details: ' + err.stack);
+                    return;
+                  }//•
+                  sails.log.verbose('Updated the `lastSeenAt` timestamp for user `' + loggedInUser.id + '`.');
+                  // Nothing else to do here.
+                });//_∏_  (Meanwhile...)
             }//ﬁ
 
 

@@ -29,8 +29,7 @@ module.exports = function expired() {
 
   if (req.wantsJSON) {
     return res.status(498).send('Token Expired/Invalid');
-  }
-  else {
+  } else {
     return res.status(498).view('498');
   }
 

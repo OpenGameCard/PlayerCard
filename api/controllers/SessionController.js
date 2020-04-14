@@ -39,11 +39,11 @@ module.exports = {
   show: async function (req, res) {
 
     var session = await Sessions.find({
-        where: {
-          id: req.params.sessionId,
-        },
-        limit: 1
-      })
+      where: {
+        id: req.params.sessionId,
+      },
+      limit: 1
+    })
       .populate('author')
       .populate('players')
       .populate('characters')
@@ -84,10 +84,10 @@ module.exports = {
   play: async function (req, res) {
 
     var session = await Sessions.findOne({
-        where: {
-          id: req.params.sessionId,
-        }
-      })
+      where: {
+        id: req.params.sessionId,
+      }
+    })
       .populate('author')
       .populate('players')
       .populate('characters')
@@ -106,23 +106,23 @@ module.exports = {
         await Character.findOne({
           id: session.characters[0].id
         }).populate('abilities')
-        .populate('skills', {
-          sort: 'position ASC'
-        })
-        .populate('saves')
-        .populate('hp')
-        .populate('initiative')
-        .populate('items')
-        .populate('perks')
-        .populate('attacks')
-        .populate('ac')
-        .populate('others')
+          .populate('skills', {
+            sort: 'position ASC'
+          })
+          .populate('saves')
+          .populate('hp')
+          .populate('initiative')
+          .populate('items')
+          .populate('perks')
+          .populate('attacks')
+          .populate('ac')
+          .populate('others')
       );
     }
 
     var map = await Maps.findOne({
-        id: 1
-      })
+      id: 1
+    })
       .populate('pawns')
       .populate('tiles');
 
