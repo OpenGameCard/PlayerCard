@@ -15,10 +15,10 @@ module.exports = {
   list: async function (req, res) {
 
     var games = await Game.find({
-        where: {
-          author: req.me.id
-        }
-      })
+      where: {
+        author: req.me.id
+      }
+    })
       .populate('maps');
 
     return res.view('pages/game/list', {
@@ -40,11 +40,11 @@ module.exports = {
   show: async function (req, res) {
 
     var game = await Game.find({
-        where: {
-          id: req.params.gameId,
-        },
-        limit: 1
-      })
+      where: {
+        id: req.params.gameId,
+      },
+      limit: 1
+    })
       .populate('maps');
 
     return res.view('pages/game/single', {

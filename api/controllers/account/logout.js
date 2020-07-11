@@ -8,7 +8,7 @@ module.exports = {
 
 
   extendedDescription:
-`This action deletes the \`req.session.userId\` key from the session of the requesting user agent.
+    `This action deletes the \`req.session.userId\` key from the session of the requesting user agent.
 Actual garbage collection of session data depends on this app's session store, and
 potentially also on the [TTL configuration](https://sailsjs.com/docs/reference/configuration/sails-config-session)
 you provided for it.

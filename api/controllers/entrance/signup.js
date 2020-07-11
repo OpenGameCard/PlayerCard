@@ -8,7 +8,7 @@ module.exports = {
 
 
   extendedDescription:
-`This creates a new user record in the database, signs in the requesting user agent
+    `This creates a new user record in the database, signs in the requesting user agent
 by modifying its [session](https://sailsjs.com/documentation/concepts/sessions), and
 (if emailing with Mailgun is enabled) sends an account verification email.
 
@@ -35,7 +35,7 @@ the account verification message.)`,
       description: 'The unencrypted password to use for the new account.'
     },
 
-    fullName:  {
+    fullName: {
       required: true,
       type: 'string',
       example: 'Frida Kahlo de Rivera',
@@ -54,8 +54,8 @@ the account verification message.)`,
     invalid: {
       responseType: 'badRequest',
       description: 'The provided fullName, password and/or email address are invalid.',
-      extendedDescription: 'If this request was sent from a graphical user interface, the request '+
-      'parameters should have been validated/coerced _before_ they were sent.'
+      extendedDescription: 'If this request was sent from a graphical user interface, the request ' +
+        'parameters should have been validated/coerced _before_ they were sent.'
     },
 
     emailAlreadyInUse: {
@@ -77,14 +77,14 @@ the account verification message.)`,
       password: await sails.helpers.passwords.hashPassword(inputs.password),
       fullName: inputs.fullName,
       tosAcceptedByIp: this.req.ip
-    }, sails.config.custom.verifyEmailAddresses? {
+    }, sails.config.custom.verifyEmailAddresses ? {
       emailProofToken: await sails.helpers.strings.random('url-friendly'),
       emailProofTokenExpiresAt: Date.now() + sails.config.custom.emailProofTokenTTL,
       emailStatus: 'unconfirmed'
-    }:{}))
-    .intercept('E_UNIQUE', 'emailAlreadyInUse')
-    .intercept({name: 'UsageError'}, 'invalid')
-    .fetch();
+    } : {}))
+      .intercept('E_UNIQUE', 'emailAlreadyInUse')
+      .intercept({name: 'UsageError'}, 'invalid')
+      .fetch();
 
     // If billing feaures are enabled, save a new customer entry in the Stripe API.
     // Then persist the Stripe customer id in the database.
@@ -93,9 +93,9 @@ the account verification message.)`,
         emailAddress: newEmailAddress
       }).timeout(5000).retry();
       await User.updateOne({id: newUserRecord.id})
-      .set({
-        stripeCustomerId
-      });
+        .set({
+          stripeCustomerId
+        });
     }
 
     // Store the user's new id in their session.

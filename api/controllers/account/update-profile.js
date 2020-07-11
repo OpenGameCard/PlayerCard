@@ -62,8 +62,8 @@ module.exports = {
     if (_.contains(['begin-change', 'change-immediately', 'modify-pending-change'], desiredEmailEffect)) {
       let conflictingUser = await User.findOne({
         or: [
-          { emailAddress: newEmailAddress },
-          { emailChangeCandidate: newEmailAddress }
+          {emailAddress: newEmailAddress},
+          {emailChangeCandidate: newEmailAddress}
         ]
       });
       if (conflictingUser) {
@@ -116,8 +116,8 @@ module.exports = {
     }
 
     // Save to the db
-    await User.updateOne({id: this.req.me.id })
-    .set(valuesToSet);
+    await User.updateOne({id: this.req.me.id})
+      .set(valuesToSet);
 
     // If this is an immediate change, and billing features are enabled,
     // then also update the billing email for this user's linked customer entry
@@ -126,17 +126,17 @@ module.exports = {
     // > then one will be set up implicitly, so we'll need to persist it to our
     // > database.  (This could happen if Stripe credentials were not configured
     // > at the time this user was originally created.)
-    if(desiredEmailEffect === 'change-immediately' && sails.config.custom.enableBillingFeatures) {
-      let didNotAlreadyHaveCustomerId = (! this.req.me.stripeCustomerId);
+    if (desiredEmailEffect === 'change-immediately' && sails.config.custom.enableBillingFeatures) {
+      let didNotAlreadyHaveCustomerId = (!this.req.me.stripeCustomerId);
       let stripeCustomerId = await sails.helpers.stripe.saveBillingInfo.with({
         stripeCustomerId: this.req.me.stripeCustomerId,
         emailAddress: newEmailAddress
       }).timeout(5000).retry();
-      if (didNotAlreadyHaveCustomerId){
-        await User.updateOne({ id: this.req.me.id })
-        .set({
-          stripeCustomerId
-        });
+      if (didNotAlreadyHaveCustomerId) {
+        await User.updateOne({id: this.req.me.id})
+          .set({
+            stripeCustomerId
+          });
       }
     }
 
@@ -148,7 +148,7 @@ module.exports = {
         subject: 'Your account has been updated',
         template: 'email-verify-new-email',
         templateData: {
-          fullName: inputs.fullName||this.req.me.fullName,
+          fullName: inputs.fullName || this.req.me.fullName,
           token: valuesToSet.emailProofToken
         }
       });

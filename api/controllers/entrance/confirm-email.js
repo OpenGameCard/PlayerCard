@@ -5,7 +5,7 @@ module.exports = {
 
 
   description:
-`Confirm a new user's email address, or an existing user's request for an email address change,
+    `Confirm a new user's email address, or an existing user's request for an email address change,
 then redirect to either a special landing page (for newly-signed up users), or the account page
 (for existing users who just changed their email address).`,
 
@@ -54,7 +54,7 @@ then redirect to either a special landing page (for newly-signed up users), or t
     }
 
     // Get the user with the matching email token.
-    var user = await User.findOne({ emailProofToken: inputs.token });
+    var user = await User.findOne({emailProofToken: inputs.token});
 
     // If no such user exists, or their token is expired, bail.
     if (!user || user.emailProofTokenExpiresAt <= Date.now()) {
@@ -69,7 +69,7 @@ then redirect to either a special landing page (for newly-signed up users), or t
       // then just update the state of their user record in the database,
       // store their user id in the session (just in case they aren't logged
       // in already), and then redirect them to the "email confirmed" page.
-      await User.updateOne({ id: user.id }).set({
+      await User.updateOne({id: user.id}).set({
         emailStatus: 'confirmed',
         emailProofToken: '',
         emailProofTokenExpiresAt: 0
@@ -79,14 +79,14 @@ then redirect to either a special landing page (for newly-signed up users), or t
       if (this.req.wantsJSON) {
         return;
       } else {
-        throw { redirect: '/email/confirmed' };
+        throw {redirect: '/email/confirmed'};
       }
 
     } else if (user.emailStatus === 'change-requested') {
       //  ┌─┐┌─┐┌┐┌┌─┐┬┬─┐┌┬┐┬┌┐┌┌─┐  ╔═╗╦ ╦╔═╗╔╗╔╔═╗╔═╗╔╦╗  ┌─┐┌┬┐┌─┐┬┬
       //  │  │ ││││├┤ │├┬┘││││││││ ┬  ║  ╠═╣╠═╣║║║║ ╦║╣  ║║  ├┤ │││├─┤││
       //  └─┘└─┘┘└┘└  ┴┴└─┴ ┴┴┘└┘└─┘  ╚═╝╩ ╩╩ ╩╝╚╝╚═╝╚═╝═╩╝  └─┘┴ ┴┴ ┴┴┴─┘
-      if (!user.emailChangeCandidate){
+      if (!user.emailChangeCandidate) {
         throw new Error(`Consistency violation: Could not update Stripe customer because this user record's emailChangeCandidate ("${user.emailChangeCandidate}") is missing.  (This should never happen.)`);
       }
 
@@ -95,7 +95,7 @@ then redirect to either a special landing page (for newly-signed up users), or t
       // sure no one else managed to grab this email in the mean time since we
       // last checked its availability. (This is a relatively rare edge case--
       // see exit description.)
-      if (await User.count({ emailAddress: user.emailChangeCandidate }) > 0) {
+      if (await User.count({emailAddress: user.emailChangeCandidate}) > 0) {
         throw 'emailAddressNoLongerAvailable';
       }
 
@@ -106,14 +106,14 @@ then redirect to either a special landing page (for newly-signed up users), or t
       // > then one will be set up implicitly, so we'll need to persist it to our
       // > database.  (This could happen if Stripe credentials were not configured
       // > at the time this user was originally created.)
-      if(sails.config.custom.enableBillingFeatures) {
-        let didNotAlreadyHaveCustomerId = (! user.stripeCustomerId);
+      if (sails.config.custom.enableBillingFeatures) {
+        let didNotAlreadyHaveCustomerId = (!user.stripeCustomerId);
         let stripeCustomerId = await sails.helpers.stripe.saveBillingInfo.with({
           stripeCustomerId: user.stripeCustomerId,
           emailAddress: user.emailChangeCandidate
         }).timeout(5000).retry();
-        if (didNotAlreadyHaveCustomerId){
-          await User.updateOne({ id: user.id }).set({
+        if (didNotAlreadyHaveCustomerId) {
+          await User.updateOne({id: user.id}).set({
             stripeCustomerId
           });
         }
@@ -122,19 +122,19 @@ then redirect to either a special landing page (for newly-signed up users), or t
       // Finally update the user in the database, store their id in the session
       // (just in case they aren't logged in already), then redirect them to
       // their "my account" page so they can see their updated email address.
-      await User.updateOne({ id: user.id })
-      .set({
-        emailStatus: 'confirmed',
-        emailProofToken: '',
-        emailProofTokenExpiresAt: 0,
-        emailAddress: user.emailChangeCandidate,
-        emailChangeCandidate: '',
-      });
+      await User.updateOne({id: user.id})
+        .set({
+          emailStatus: 'confirmed',
+          emailProofToken: '',
+          emailProofTokenExpiresAt: 0,
+          emailAddress: user.emailChangeCandidate,
+          emailChangeCandidate: '',
+        });
       this.req.session.userId = user.id;
       if (this.req.wantsJSON) {
         return;
       } else {
-        throw { redirect: '/account' };
+        throw {redirect: '/account'};
       }
 
     } else {

@@ -23,28 +23,28 @@ module.exports = {
       type: 'string',
       example: '4242',
       description: 'Omit if removing card info.',
-      whereToGet: { description: 'Credit card info is provided by Stripe after completing the checkout flow.' }
+      whereToGet: {description: 'Credit card info is provided by Stripe after completing the checkout flow.'}
     },
 
     billingCardBrand: {
       type: 'string',
       example: 'visa',
       description: 'Omit if removing card info.',
-      whereToGet: { description: 'Credit card info is provided by Stripe after completing the checkout flow.' }
+      whereToGet: {description: 'Credit card info is provided by Stripe after completing the checkout flow.'}
     },
 
     billingCardExpMonth: {
       type: 'string',
       example: '08',
       description: 'Omit if removing card info.',
-      whereToGet: { description: 'Credit card info is provided by Stripe after completing the checkout flow.' }
+      whereToGet: {description: 'Credit card info is provided by Stripe after completing the checkout flow.'}
     },
 
     billingCardExpYear: {
       type: 'string',
       example: '2023',
       description: 'Omit if removing card info.',
-      whereToGet: { description: 'Credit card info is provided by Stripe after completing the checkout flow.' }
+      whereToGet: {description: 'Credit card info is provided by Stripe after completing the checkout flow.'}
     },
 
   },
@@ -63,15 +63,15 @@ module.exports = {
     // > Remember, never store complete card numbers-- only the last 4 digits + expiration!
     // > Storing (or even receiving) complete, unencrypted card numbers would require PCI
     // > compliance in the U.S.
-    await User.updateOne({ id: this.req.me.id })
-    .set({
-      stripeCustomerId,
-      hasBillingCard: inputs.stripeToken ? true : false,
-      billingCardBrand: inputs.stripeToken ? inputs.billingCardBrand : '',
-      billingCardLast4: inputs.stripeToken ? inputs.billingCardLast4 : '',
-      billingCardExpMonth: inputs.stripeToken ? inputs.billingCardExpMonth : '',
-      billingCardExpYear: inputs.stripeToken ? inputs.billingCardExpYear : ''
-    });
+    await User.updateOne({id: this.req.me.id})
+      .set({
+        stripeCustomerId,
+        hasBillingCard: inputs.stripeToken ? true : false,
+        billingCardBrand: inputs.stripeToken ? inputs.billingCardBrand : '',
+        billingCardLast4: inputs.stripeToken ? inputs.billingCardLast4 : '',
+        billingCardExpMonth: inputs.stripeToken ? inputs.billingCardExpMonth : '',
+        billingCardExpYear: inputs.stripeToken ? inputs.billingCardExpYear : ''
+      });
 
   }
 
