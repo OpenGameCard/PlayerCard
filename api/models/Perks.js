@@ -1,10 +1,3 @@
-/**
- * Items.js
- *
- * @description :: A model definition.  Represents a database table/collection/etc.
- * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
- */
-
 module.exports = {
   attributes: {
     name: {
@@ -31,8 +24,6 @@ module.exports = {
       maxLength: 2048,
       example: 'Różowe stringi, +10 do CHA'
     },
-
-
     owner: {
       model: 'character'
     },
