@@ -1,0 +1,52 @@
+version: "3.8"
+services:
+
+  app:
+    build: .
+    working_dir: /application
+    restart: always
+    volumes:
+      - ./:/application
+    command: ["sails", "lift", "--silly", "--drop"]
+    networks:
+      - frontend
+      - backend
+
+  proxy:
+    image: nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "8080:8080"
+    command: ["nginx-debug", "-g", "daemon off;"]
+    networks:
+      - frontend
+
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      - db-storage:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: sails
+      POSTGRES_DB: sails
+      POSTGRES_PASSWORD: sails
+    networks:
+      - backend
+
+  redis:
+    image: redis:latest
+    volumes:
+      - redis-storage:/data
+    entrypoint: ["redis-server", "--appendonly", "yes"]
+    restart: always
+    networks:
+      - backend
+
+volumes:
+  db-storage:
+  redis-storage:
+
+networks:
+  backend:
+  frontend:
