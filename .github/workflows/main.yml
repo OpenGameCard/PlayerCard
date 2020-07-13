@@ -18,6 +18,7 @@ jobs:
           name: jetalone/opengame-frontend
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+          context: ./services/frontend/
           dockerfile: ./services/frontend/Dockerfile
           snapshot: true
           tag_names: true
@@ -32,6 +33,7 @@ jobs:
           name: jetalone/opengame-backend
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+          context: ./services/backend/
           dockerfile: ./services/backend/Dockerfile
           snapshot: true
           tag_names: true
