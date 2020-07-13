@@ -17,6 +17,7 @@ jobs:
         name: jetalone/opengame
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        dockerfile: Dockerfile
+        context: ./services/frontend
+        dockerfile: ./services/frontend/Dockerfile
         snapshot: true
         tag_names: true
