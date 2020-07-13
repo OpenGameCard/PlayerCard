@@ -59,26 +59,6 @@
           <div class="form-group">
             <button class="btn btn-primary btn-block">Sign Up</button>
           </div>
-
-          <hr/>
-
-          <ul>
-            <li v-for="agreement in agreements" :key="agreement.id">
-              <div>
-                <label :for="agreement.id">
-                  <input
-                    type="checkbox"
-                    :id=" agreement.id"
-                    :required="!!agreement.is_required"
-                    v-model="user.agreements"
-                    @change="handleAgreements(agreement)">
-                  {{ agreement.title }}</label>
-                <p v-show="!!agreement.is_required">(wymagana)</p>
-                <p>{{ agreement.description.substring(0,200)+".. " }}(<a href="#">więcej</a>)</p>
-              </div>
-
-            </li>
-          </ul>
         </div>
       </form>
 
@@ -96,28 +76,19 @@
 
 <script>
   import User from '../models/user';
-  import axios from "axios";
 
   export default {
     name: 'Register',
     data() {
       return {
         agreements: [],
-        user: new User('', '', '', []),
+        user: new User('', '', ''),
         submitted: false,
         successful: false,
         message: ''
       };
     },
     created() {
-      axios.get('http://localhost:5000/api/v1/agreements/').then(
-        response => {
-          this.agreements = response.data
-          this.user.agreements = this.agreements
-        }
-      ).catch(e => {
-        this.errors.push(e)
-      })
     },
     computed: {
       loggedIn() {
@@ -132,19 +103,8 @@
     },
     methods: {
       handleAgreements(item) {
-        // eslint-disable-next-line
-        console.log(this);
-        // Do what you want with the selected objects:
-        // eslint-disable-next-line
-        console.log(item);
-        // eslint-disable-next-line
-        console.log(user);
-        // this.user.agreements = item;
       },
       handleRegister() {
-        // eslint-disable-next-line
-        console.log(this);
-
         this.message = '';
         this.submitted = true;
         this.$validator.validate().then(isValid => {

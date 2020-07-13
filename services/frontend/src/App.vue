@@ -3,7 +3,7 @@
     <b-navbar>
       <template slot="brand">
         <b-navbar-item tag="router-link" :to="{ path: '/' }">
-          <span>coorseo.com</span>
+          <span>OpenGame</span>
         </b-navbar-item>
       </template>
       <template slot="start">
@@ -56,20 +56,6 @@
     computed: {
       currentUser() {
         return this.$store.state.auth.user;
-      },
-      showAdminBoard() {
-        if (this.currentUser && this.currentUser.roles) {
-          return this.currentUser.roles.includes('ROLE_ADMIN');
-        }
-
-        return false;
-      },
-      showModeratorBoard() {
-        if (this.currentUser && this.currentUser.roles) {
-          return this.currentUser.roles.includes('ROLE_MODERATOR');
-        }
-
-        return false;
       }
     },
     methods: {

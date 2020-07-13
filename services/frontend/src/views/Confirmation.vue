@@ -16,9 +16,6 @@
     methods: {},
     mounted() {
 
-      // eslint-disable-next-line
-      console.log(this.$route.query.token)
-
       this.$store.dispatch('auth/confirmation', this.$route.query.token).then(
         data => {
           this.message = data.message;

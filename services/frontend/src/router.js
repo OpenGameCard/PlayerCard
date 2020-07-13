@@ -3,7 +3,7 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 import Login from './views/Login.vue';
 import Register from './views/Register.vue';
-import Confirmation from "@/views/Confirmation";
+import Confirmation from "./views/Confirmation.vue";
 
 Vue.use(Router);
 
@@ -36,16 +36,6 @@ export const router = new Router({
       path: '/profile',
       name: 'profile',
       component: () => import('./views/Profile.vue')
-    },
-    {
-      path: '/admin',
-      name: 'admin',
-      component: () => import('./views/BoardAdmin.vue')
-    },
-    {
-      path: '/mod',
-      name: 'moderator',
-      component: () => import('./views/BoardModerator.vue')
     },
     {
       path: '/user',
