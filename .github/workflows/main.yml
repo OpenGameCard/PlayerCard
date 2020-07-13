@@ -7,19 +7,6 @@ on:
     branches: [ master, develop ]
 
 jobs:
-  build-auth:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - name: Publish Backend to Registry
-        uses: elgohr/Publish-Docker-Github-Action@master
-        with:
-          name: jetalone/opengame-auth
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          dockerfile: ./services/auth/Dockerfile
-          snapshot: true
-          tag_names: true
 
   build-frontend:
     runs-on: ubuntu-latest
