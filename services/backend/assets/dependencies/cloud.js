@@ -741,7 +741,7 @@
                   else {
                     ajaxOpts.data = JSON.stringify(textParamsByFieldName);
                     ajaxOpts.processData = false;
-                    ajaxOpts.contentType = 'application/json; charset=UTF-8';
+                    ajaxOpts.contentType = 'backend/json; charset=UTF-8';
                   }
 
                   if (typeof requestInfo.headers !== 'undefined') {

@@ -3609,7 +3609,7 @@
 
     /**
      * Creates a function that wraps `func` and invokes it with optional `this`
-     * binding of, partial application, and currying.
+     * binding of, partial backend, and currying.
      *
      * @private
      * @param {Function|string} func The function or method name to reference.

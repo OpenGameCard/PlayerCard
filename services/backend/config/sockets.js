@@ -16,7 +16,7 @@ module.exports.sockets = {
   * `transports`                                                             *
   *                                                                          *
   * The protocols or "transports" that socket clients are permitted to       *
-  * use when connecting and communicating with this Sails application.       *
+  * use when connecting and communicating with this Sails backend.       *
   *                                                                          *
   * > Never change this here without also configuring `io.sails.transports`  *
   * > in your client-side code.  If the client and the server are not using  *

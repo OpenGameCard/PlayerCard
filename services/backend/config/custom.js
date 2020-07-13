@@ -2,7 +2,7 @@
  * Custom configuration
  * (sails.config.custom)
  *
- * One-off settings specific to your application.
+ * One-off settings specific to your backend.
  *
  * For more information on custom configuration, visit:
  * https://sailsjs.com/config/custom

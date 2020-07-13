@@ -14899,7 +14899,7 @@
             var xhr = new XMLHttpRequest();
             var url = "/throw/save";
             xhr.open("POST", url, true);
-            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("Content-Type", "backend/json");
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 201) {
                     var json = JSON.parse(xhr.responseText);

@@ -17,7 +17,7 @@ module.exports.security = {
 
   /***************************************************************************
    *                                                                          *
-   * CORS is like a more modern version of JSONP-- it allows your application *
+   * CORS is like a more modern version of JSONP-- it allows your backend *
    * to circumvent browsers' same-origin policy, so that the responses from   *
    * your Sails app hosted on one domain (e.g. example.com) can be received   *
    * in the client-side JavaScript code from a page you trust hosted on _some *
@@ -37,7 +37,7 @@ module.exports.security = {
 
   /****************************************************************************
    *                                                                           *
-   * CSRF protection should be enabled for this application.                   *
+   * CSRF protection should be enabled for this backend.                   *
    *                                                                           *
    * For more information, see:                                                *
    * https://sailsjs.com/docs/concepts/security/csrf                           *
