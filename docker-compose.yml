@@ -1,38 +1,84 @@
 version: "3.8"
 
 services:
-  application:
+
+  app-auth:
     build:
-      context: .
+      context: ./services/auth
       dockerfile: Dockerfile
-    working_dir: /application
+    volumes:
+      - ./services/auth:/coorseo-api/
+    restart: on-failure
+    environment:
+      SECRET_KEY: HxGIR23yK41si8zd9t9kKTEzQu5IyWetsGzrKtPCe294P4ACyselq4McFarahci
+      SESSION_COOKIE_NAME: my_cookie
+      SQLALCHEMY_DATABASE_URI: postgresql+psycopg2://user:password@db:5432/coorseo
+    ports:
+      - 5000:5000
+    networks:
+      - backend
+
+  app-backend:
+    build:
+      context: services/backend
+      dockerfile: Dockerfile
+    working_dir: /backend
     restart: always
     volumes:
-      - ./services/application:/application
+      - ./services/backend:/backend
     command: ["sails", "lift", "--silly", "--drop"]
     networks:
       - frontend
       - backend
+
+  app-frontend:
+    build:
+      context: ./services/frontend
+      dockerfile: Dockerfile
+    working_dir: /app
+    volumes:
+      - ./services/frontend:/app
+    ports:
+      - 8081:80
+    networks:
+      - frontend
+
   proxy:
     image: nginx
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
     ports:
-      - "8080:8080"
+      - 8080:8080
     command: ["nginx-debug", "-g", "daemon off;"]
     networks:
       - frontend
-  db:
+
+  db-auth:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: coorseo
+    volumes:
+      - db-data-auth:/var/lib/postgresql/data
+    networks:
+      - backend
+
+  db-backend:
     image: postgres
     restart: always
     volumes:
-      - db-storage:/var/lib/postgresql/data
+      - db-data-backend:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: sails
       POSTGRES_DB: sails
       POSTGRES_PASSWORD: sails
     networks:
       - backend
+
   redis:
     image: redis:latest
     volumes:
@@ -42,8 +88,16 @@ services:
     networks:
       - backend
 
+  mailhog:
+    image: mailhog/mailhog:latest
+    restart: always
+    ports:
+      - 1025:1025
+      - 8025:8025
+
 volumes:
-  db-storage:
+  db-data-auth:
+  db-data-backend:
   redis-storage:
 
 networks:

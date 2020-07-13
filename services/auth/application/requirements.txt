@@ -1,0 +1,45 @@
+Werkzeug
+SQLAlchemy
+Flask_Caching
+Flask_SQLAlchemy
+click
+marshmallow
+Flask_Bcrypt
+flask_apispec
+Flask
+PyJWT
+Flask-JWT-Extended
+unicode_slugify
+Flask-Migrate
+gunicorn
+Flask-Cors
+psycopg2-binary
+flask-marshmallow
+marshmallow_sqlalchemy
+flask_uuid
+numpy
+flask-login
+passlib
+Flask-Mail
+python-dotenv
+pycrypto
+cryptography
+flask-jsonschema-validator
+flask_cors
+flask_script
+
+elasticsearch # ?
+Flask-Elasticsearch # ? https://pypi.org/project/Flask-Elasticsearch/
+
+flask_swagger_ui
+
+pykafka
+
+
+# Testing
+pytest
+WebTest
+factory-boy
+
+# For python 3
+Faker
