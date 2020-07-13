@@ -12,7 +12,7 @@ jobs:
     steps:
       -
     - uses: actions/checkout@master
-    - name: Publish to Registry
+    - name: Publish Front to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
         name: jetalone/opengame-frontend
@@ -24,7 +24,7 @@ jobs:
         tag_names: true
 
     - uses: actions/checkout@master
-    - name: Publish to Registry
+    - name: Publish Backend to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
         name: jetalone/opengame-backend
