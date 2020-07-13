@@ -37,26 +37,26 @@ module.exports = {
       name: 'S',
       position: 1
     },
-      {
-        name: 'ZR',
-        position: 2
-      },
-      {
-        name: 'BD',
-        position: 3
-      },
-      {
-        name: 'INT',
-        position: 4
-      },
-      {
-        name: 'RZT',
-        position: 5
-      },
-      {
-        name: 'CHA',
-        position: 6
-      }
+    {
+      name: 'ZR',
+      position: 2
+    },
+    {
+      name: 'BD',
+      position: 3
+    },
+    {
+      name: 'INT',
+      position: 4
+    },
+    {
+      name: 'RZT',
+      position: 5
+    },
+    {
+      name: 'CHA',
+      position: 6
+    }
     ];
 
     _abilities.forEach(async (element) => {
@@ -363,20 +363,20 @@ module.exports = {
       value4: null,
       ability: 'BD',
     },
-      {
-        name: 'Refleks',
-        code: 'refl',
-        value3: 0,
-        value4: null,
-        ability: 'ZR',
-      },
-      {
-        name: 'Wola',
-        code: 'wola',
-        value3: 0,
-        value4: null,
-        ability: 'RZT',
-      },
+    {
+      name: 'Refleks',
+      code: 'refl',
+      value3: 0,
+      value4: null,
+      ability: 'ZR',
+    },
+    {
+      name: 'Wola',
+      code: 'wola',
+      value3: 0,
+      value4: null,
+      ability: 'RZT',
+    },
     ];
 
     _saves.forEach(async (element) => {
@@ -798,7 +798,7 @@ module.exports = {
   saveThrow: async function (req, res) {
 
     var Throw = await Throws.create({
-      reason: "none",
+      reason: 'none',
       result: req.body.res,
       owner: req.body.characterID
     }).fetch();
