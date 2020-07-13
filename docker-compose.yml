@@ -3,7 +3,7 @@ version: "3.8"
 services:
   application:
     build:
-      context: services/application
+      context: .
       dockerfile: Dockerfile
     working_dir: /application
     restart: always
