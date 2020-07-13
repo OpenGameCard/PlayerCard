@@ -1,17 +1,18 @@
 version: "3.8"
-services:
 
-  app:
-    build: .
+services:
+  application:
+    build:
+      context: .
+      dockerfile: Dockerfile
     working_dir: /application
     restart: always
     volumes:
-      - ./:/application
+      - ./services/application:/application
     command: ["sails", "lift", "--silly", "--drop"]
     networks:
       - frontend
       - backend
-
   proxy:
     image: nginx
     volumes:
@@ -21,7 +22,6 @@ services:
     command: ["nginx-debug", "-g", "daemon off;"]
     networks:
       - frontend
-
   db:
     image: postgres
     restart: always
@@ -33,7 +33,6 @@ services:
       POSTGRES_PASSWORD: sails
     networks:
       - backend
-
   redis:
     image: redis:latest
     volumes:
