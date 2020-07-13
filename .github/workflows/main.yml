@@ -12,6 +12,7 @@ jobs:
     steps:
 
       - uses: actions/checkout@master
+
       - name: Publish Front to Registry
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
@@ -23,7 +24,6 @@ jobs:
           snapshot: true
           tag_names: true
 
-      - uses: actions/checkout@master
       - name: Publish Backend to Registry
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
