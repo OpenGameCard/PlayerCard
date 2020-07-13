@@ -1,4 +1,4 @@
-name: Publish Docker
+name: Build and publish Docker Image
 on: [push]
 jobs:
   build:
@@ -11,6 +11,6 @@ jobs:
         name: jetalone/opengame
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        dockerfile: build.dockerfile
-        snapshot: true  
+        dockerfile: Dockerfile
+        snapshot: true
         tag_names: true
