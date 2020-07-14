@@ -2,23 +2,6 @@ version: "3.8"
 
 services:
 
-  app-auth:
-    build:
-      context: ./services/auth
-      dockerfile: Dockerfile
-    volumes:
-      - ./services/auth:/coorseo-api/
-    restart: on-failure
-    environment:
-      SECRET_KEY: HxGIR23yK41si8zd9t9kKTEzQu5IyWetsGzrKtPCe294P4ACyselq4McFarahci
-      SESSION_COOKIE_NAME: my_cookie
-      SQLALCHEMY_DATABASE_URI: postgresql+psycopg2://user:password@db:5432/coorseo
-    ports:
-      - 5000:5000
-    networks:
-      - frontend
-      - backend
-
   app-backend:
     build:
       context: services/backend
@@ -44,18 +27,6 @@ services:
       - 8000:80
     networks:
       - frontend
-
-  db-auth:
-    image: postgres
-    restart: always
-    environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: coorseo
-    volumes:
-      - db-data-auth:/var/lib/postgresql/data
-    networks:
-      - backend
 
   db-backend:
     image: postgres
@@ -87,7 +58,6 @@ services:
       - frontend
 
 volumes:
-  db-data-auth:
   db-data-backend:
   redis-storage:
 
