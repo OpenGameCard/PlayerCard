@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+
+  app-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    volumes:
+      - .:/backend
+    command: ["sails", "lift", "--silly", "--drop"]
+    ports:
+      - 1337:1337
+    networks:
+      - frontend
+      - backend
+
+  db-backend:
+    image: postgres
+    restart: always
+    volumes:
+      - db-data-backend:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: sails
+      POSTGRES_DB: sails
+      POSTGRES_PASSWORD: sails
+    networks:
+      - backend
+
+  redis:
+    image: redis:latest
+    volumes:
+      - redis-storage:/data
+    entrypoint: ["redis-server", "--appendonly", "yes"]
+    restart: always
+    networks:
+      - backend
+
+volumes:
+  db-data-backend:
+  redis-storage:
+
+networks:
+  backend:
+  frontend:
