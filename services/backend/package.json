@@ -13,7 +13,8 @@
     "@sailshq/connect-redis": "^3.2.1",
     "@sailshq/socket.io-redis": "^5.2.0",
     "@sailshq/lodash": "^3.10.3",
-    "sails-postgresql": "^1.0.2"
+    "sails-postgresql": "^1.0.2",
+    "braces": ">=2.3.1"
   },
   "devDependencies": {
     "eslint": "5.16.0",
