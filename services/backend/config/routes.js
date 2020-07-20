@@ -43,31 +43,6 @@ module.exports.routes = {
   'POST  /api/v1/entrance/update-password-and-login': {action: 'entrance/update-password-and-login'},
   'POST  /api/v1/deliver-contact-form-message': {action: 'deliver-contact-form-message'},
 
-  'GET /dice': {action: 'dice/throw'},
-
-  'GET /game/list': 'GameController.list',
-  'GET /game/new': 'GameController.new',
-  'GET /game/show/:gameId': 'GameController.show',
-
-  'GET /game/show/:gameId/map/new': 'MapsController.new',
-  'GET /game/show/:gameId/map/:mapId/show': 'MapsController.show',
-  'POST /game/show/:gameId/map/:mapId/load': 'MapsController.load',
-  'POST /game/show/:gameId/map/:mapId/update/single': 'MapsController.updateSingle',
-
-  'POST /command': 'SayController.command',
-  'POST /map/save/character': 'SayController.saveCharacterOnMap',
-
-  'GET /session/list': 'SessionController.list',
-  'GET /session/new': 'SessionController.new',
-  'GET /session/show/:sessionId': 'SessionController.show',
-  'POST /session/addPlayersToSession': 'SessionController.addPlayersToSession',
-  'POST /session/removePlayersToSession': 'SessionController.removePlayersToSession',
-
-  'GET /session/play/:sessionId': 'SessionController.play',
-
-  'GET /session/play/:sessionId/select/character/:characterId': 'SessionController.addCharacterToSession',
-  'GET /session/play/:sessionId/remove/character/:characterId': 'SessionController.removeCharacterToSession',
-
   'GET /sheet/list': 'CharacterController.list',
   'GET /sheet/new': 'CharacterController.new',
   'GET /sheet/show/:characterId': 'CharacterController.show',
@@ -92,10 +67,6 @@ module.exports.routes = {
   'POST /throw/save': 'CharacterController.saveThrow',
 
   'POST /sheet/show/remove/row/single': 'CharacterController.removeRowSingle',
-
-  'GET /events/maps/player/load': 'EventsController.loadMaps',
-
-  'GET /admin': 'AdminController.index',
 
   'GET /player': {action: 'view-player'},
   'GET /gm': {action: 'view-gm'},
