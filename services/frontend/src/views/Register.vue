@@ -102,8 +102,6 @@
       }
     },
     methods: {
-      handleAgreements(item) {
-      },
       handleRegister() {
         this.message = '';
         this.submitted = true;
@@ -143,8 +141,7 @@
   .card {
     background-color: #f7f7f7;
     padding: 20px 25px 30px;
-    margin: 0 auto 25px;
-    margin-top: 50px;
+    margin: 50px auto 25px;
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
     border-radius: 2px;
