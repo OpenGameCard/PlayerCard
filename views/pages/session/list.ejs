@@ -1,37 +1,37 @@
 <%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
 
-<div class="container-fluid scenario" id="scenario">
-    <div class="container">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/welcome">Tablica</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Sesje</li>
-            </ol>
-        </nav>
-        <% _.each(sessions, function (session) { %>
-            <div class="card">
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col col-6">
-                            <ul class="nav nav-pills card-header-pills">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/session/show/<%= session.id %>">
-                                        <%= session.name %>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col col-6">
-                            <ul class="nav nav-pills card-header-pills float-right">
-                                <li class="nav-item">
-                                </li>
-                            </ul>
+    <div class="container-fluid scenario" id="scenario">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/welcome">Tablica</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Sesje</li>
+                </ol>
+            </nav>
+            <% _.each(sessions, function (session) { %>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col col-6">
+                                <ul class="nav nav-pills card-header-pills">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/session/show/<%= session.id %>">
+                                            <%= session.name %>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col col-6">
+                                <ul class="nav nav-pills card-header-pills float-right">
+                                    <li class="nav-item">
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        <% }) %>
-        <hr>
-        <a href="/session/new">Dodaj nową...</a>
+                <% }) %>
+                    <hr>
+                    <a href="/session/new">Dodaj nową...</a>
+        </div>
     </div>
-</div>

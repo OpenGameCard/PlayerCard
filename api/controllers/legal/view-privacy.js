@@ -1,27 +1,27 @@
 module.exports = {
 
 
-  friendlyName: 'View privacy',
+    friendlyName: 'View privacy',
 
 
-  description: 'Display "Privacy policy" page.',
+    description: 'Display "Privacy policy" page.',
 
 
-  exits: {
+    exits: {
 
-    success: {
-      viewTemplatePath: 'pages/legal/privacy'
+        success: {
+            viewTemplatePath: 'pages/legal/privacy'
+        }
+
+    },
+
+
+    fn: async function() {
+
+        // All done.
+        return;
+
     }
-
-  },
-
-
-  fn: async function () {
-
-    // All done.
-    return;
-
-  }
 
 
 };

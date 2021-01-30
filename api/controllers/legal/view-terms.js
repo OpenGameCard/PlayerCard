@@ -1,27 +1,27 @@
 module.exports = {
 
 
-  friendlyName: 'View terms',
+    friendlyName: 'View terms',
 
 
-  description: 'Display "Legal terms" page.',
+    description: 'Display "Legal terms" page.',
 
 
-  exits: {
+    exits: {
 
-    success: {
-      viewTemplatePath: 'pages/legal/terms'
+        success: {
+            viewTemplatePath: 'pages/legal/terms'
+        }
+
+    },
+
+
+    fn: async function() {
+
+        // All done.
+        return;
+
     }
-
-  },
-
-
-  fn: async function () {
-
-    // All done.
-    return;
-
-  }
 
 
 };

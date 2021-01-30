@@ -6,25 +6,25 @@
  */
 
 module.exports = {
-  attributes: {
+    attributes: {
 
-    reason: {
-      type: 'string',
-      required: true,
-      description: '',
-      maxLength: 128,
+        reason: {
+            type: 'string',
+            required: true,
+            description: '',
+            maxLength: 128,
+        },
+
+        result: {
+            type: 'string',
+            required: true,
+            description: '',
+            maxLength: 64,
+        },
+
+        owner: {
+            model: 'character'
+        },
+
     },
-
-    result: {
-      type: 'string',
-      required: true,
-      description: '',
-      maxLength: 64,
-    },
-
-    owner: {
-      model: 'character'
-    },
-
-  },
 };

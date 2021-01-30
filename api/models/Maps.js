@@ -7,38 +7,38 @@
 
 module.exports = {
 
-  attributes: {
+    attributes: {
 
-    name: {
-      type: 'string',
-      required: true,
-      description: 'Name of Location',
-      maxLength: 255,
-      example: 'Giant\'s cave, level 2.'
+        name: {
+            type: 'string',
+            required: true,
+            description: 'Name of Location',
+            maxLength: 255,
+            example: 'Giant\'s cave, level 2.'
+        },
+
+        description: {
+            type: 'string',
+            required: false,
+            description: '',
+            maxLength: 1048576,
+            example: ''
+        },
+
+        tiles: {
+            collection: 'tiles',
+            via: 'owner'
+        },
+
+        pawns: {
+            collection: 'pawns',
+            via: 'owner'
+        },
+
+        owner: {
+            model: 'game'
+        },
+
     },
-
-    description: {
-      type: 'string',
-      required: false,
-      description: '',
-      maxLength: 1048576,
-      example: ''
-    },
-
-    tiles: {
-      collection: 'tiles',
-      via: 'owner'
-    },
-
-    pawns: {
-      collection: 'pawns',
-      via: 'owner'
-    },
-
-    owner: {
-      model: 'game'
-    },
-
-  },
 
 };

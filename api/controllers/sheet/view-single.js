@@ -1,16 +1,16 @@
 module.exports = {
 
-  friendlyName: 'friendlyName',
-  description: 'description',
+    friendlyName: 'friendlyName',
+    description: 'description',
 
-  exits: {
-    success: {
-      viewTemplatePath: 'pages/sheet/single',
-      description: 'description'
+    exits: {
+        success: {
+            viewTemplatePath: 'pages/sheet/single',
+            description: 'description'
+        },
     },
-  },
 
-  fn: async function (inputs, exits) {
-    return exits.success();
-  }
+    fn: async function(inputs, exits) {
+        return exits.success();
+    }
 };

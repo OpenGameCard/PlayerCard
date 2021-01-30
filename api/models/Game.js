@@ -6,28 +6,28 @@
  */
 
 module.exports = {
-  attributes: {
+    attributes: {
 
-    title: {
-      type: 'string',
-      required: true,
-      description: 'Tytuł przygody/kampanii.',
-      maxLength: 1024,
-      example: 'Złoto i krew'
+        title: {
+            type: 'string',
+            required: true,
+            description: 'Tytuł przygody/kampanii.',
+            maxLength: 1024,
+            example: 'Złoto i krew'
+        },
+
+        author: {
+            model: 'user'
+        },
+
+        maps: {
+            collection: 'maps',
+            via: 'owner'
+        },
+
+        session: {
+            model: 'sessions'
+        },
+
     },
-
-    author: {
-      model: 'user'
-    },
-
-    maps: {
-      collection: 'maps',
-      via: 'owner'
-    },
-
-    session: {
-      model: 'sessions'
-    },
-
-  },
 };

@@ -7,66 +7,66 @@
 
 
 module.exports = {
-  attributes: {
+    attributes: {
 
-    dexternity: {
-      type: 'number',
-      required: false,
-      allowNull: true,
-      description: '',
-      example: 4
+        dexternity: {
+            type: 'number',
+            required: false,
+            allowNull: true,
+            description: '',
+            example: 4
+        },
+
+        armor: {
+            type: 'number',
+            required: false,
+            allowNull: true,
+            description: '',
+            example: 4
+        },
+
+        shield: {
+            type: 'number',
+            required: false,
+            allowNull: true,
+            description: '',
+            example: 12
+        },
+
+        naturalArmor: {
+            type: 'number',
+            required: false,
+            allowNull: true,
+            description: '',
+            example: 12
+        },
+        size: {
+            type: 'number',
+            required: false,
+            allowNull: true,
+            description: '',
+            example: 12
+        },
+
+        reflexion: {
+            type: 'number',
+            required: false,
+            allowNull: true,
+            description: '',
+            example: 12
+        },
+
+        others: {
+            type: 'number',
+            required: false,
+            allowNull: true,
+            description: '',
+            example: 12
+        },
+
+        owner: {
+            model: 'character'
+        }
+
     },
-
-    armor: {
-      type: 'number',
-      required: false,
-      allowNull: true,
-      description: '',
-      example: 4
-    },
-
-    shield: {
-      type: 'number',
-      required: false,
-      allowNull: true,
-      description: '',
-      example: 12
-    },
-
-    naturalArmor: {
-      type: 'number',
-      required: false,
-      allowNull: true,
-      description: '',
-      example: 12
-    },
-    size: {
-      type: 'number',
-      required: false,
-      allowNull: true,
-      description: '',
-      example: 12
-    },
-
-    reflexion: {
-      type: 'number',
-      required: false,
-      allowNull: true,
-      description: '',
-      example: 12
-    },
-
-    others: {
-      type: 'number',
-      required: false,
-      allowNull: true,
-      description: '',
-      example: 12
-    },
-
-    owner: {
-      model: 'character'
-    }
-
-  },
 };

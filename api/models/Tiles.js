@@ -7,17 +7,17 @@
 
 module.exports = {
 
-  attributes: {
+    attributes: {
 
-    properties: {
-      type: 'json',
-      required: false,
-      maxLength: 4096 * 4096,
+        properties: {
+            type: 'json',
+            required: false,
+            maxLength: 4096 * 4096,
+        },
+
+        owner: {
+            model: 'maps'
+        },
+
     },
-
-    owner: {
-      model: 'maps'
-    },
-
-  },
 };

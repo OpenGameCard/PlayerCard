@@ -1,27 +1,27 @@
 module.exports = {
 
 
-  friendlyName: 'View welcome page',
+    friendlyName: 'View welcome page',
 
 
-  description: 'Display the dashboard "Welcome" page.',
+    description: 'Display the dashboard "Welcome" page.',
 
 
-  exits: {
+    exits: {
 
-    success: {
-      viewTemplatePath: 'pages/dashboard/welcome',
-      description: 'Display the welcome page for authenticated users.'
+        success: {
+            viewTemplatePath: 'pages/dashboard/welcome',
+            description: 'Display the welcome page for authenticated users.'
+        },
+
     },
 
-  },
 
+    fn: async function() {
 
-  fn: async function () {
+        return {};
 
-    return {};
-
-  }
+    }
 
 
 };

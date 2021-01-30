@@ -6,24 +6,24 @@
  */
 
 module.exports = {
-  _config: {
-    actions: true,
-    shortcuts: true,
-    rest: true
-  },
+    _config: {
+        actions: true,
+        shortcuts: true,
+        rest: true
+    },
 
-  loadMaps: async function (req, res) {
-    var maps = await Maps.find({
-      where: {
-        id: 1,
-      },
-      limit: 1
-    })
-      .populate('pawns')
-      .populate('tiles');
+    loadMaps: async function(req, res) {
+        var maps = await Maps.find({
+                where: {
+                    id: 1,
+                },
+                limit: 1
+            })
+            .populate('pawns')
+            .populate('tiles');
 
-    res.sse('load_maps_player_events', {
-      maps: maps
-    });
-  },
+        res.sse('load_maps_player_events', {
+            maps: maps
+        });
+    },
 };

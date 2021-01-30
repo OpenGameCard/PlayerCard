@@ -6,49 +6,49 @@
  */
 
 module.exports = {
-  _config: {
-    actions: true,
-    shortcuts: false,
-    rest: true
-  },
+    _config: {
+        actions: true,
+        shortcuts: false,
+        rest: true
+    },
 
-  list: async function (req, res) {
+    list: async function(req, res) {
 
-    var games = await Game.find({
-      where: {
-        author: req.me.id
-      }
-    })
-      .populate('maps');
+        var games = await Game.find({
+                where: {
+                    author: req.me.id
+                }
+            })
+            .populate('maps');
 
-    return res.view('pages/game/list', {
-      games: games,
-    });
-  },
+        return res.view('pages/game/list', {
+            games: games,
+        });
+    },
 
-  new: async function (req, res) {
+    new: async function(req, res) {
 
-    var _newGame;
-    _newGame = await Game.create({
-      title: 'Przykładowy tytuł scerariusza',
-      author: req.me.id
-    }).fetch();
+        var _newGame;
+        _newGame = await Game.create({
+            title: 'Przykładowy tytuł scerariusza',
+            author: req.me.id
+        }).fetch();
 
-    return res.redirect('/game/show/' + _newGame.id);
-  },
+        return res.redirect('/game/show/' + _newGame.id);
+    },
 
-  show: async function (req, res) {
+    show: async function(req, res) {
 
-    var game = await Game.find({
-      where: {
-        id: req.params.gameId,
-      },
-      limit: 1
-    })
-      .populate('maps');
+        var game = await Game.find({
+                where: {
+                    id: req.params.gameId,
+                },
+                limit: 1
+            })
+            .populate('maps');
 
-    return res.view('pages/game/single', {
-      game: game,
-    });
-  },
+        return res.view('pages/game/single', {
+            game: game,
+        });
+    },
 };

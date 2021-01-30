@@ -1,27 +1,27 @@
 module.exports = {
 
 
-  friendlyName: 'View faq',
+    friendlyName: 'View faq',
 
 
-  description: 'Display "FAQ" page.',
+    description: 'Display "FAQ" page.',
 
 
-  exits: {
+    exits: {
 
-    success: {
-      viewTemplatePath: 'pages/faq'
+        success: {
+            viewTemplatePath: 'pages/faq'
+        }
+
+    },
+
+
+    fn: async function() {
+
+        // Respond with view.
+        return {};
+
     }
-
-  },
-
-
-  fn: async function () {
-
-    // Respond with view.
-    return {};
-
-  }
 
 
 };

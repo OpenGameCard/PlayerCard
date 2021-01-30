@@ -1,68 +1,67 @@
 <%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
 
-<div class="container-fluid">
-    <div class="container sheet_card">
+    <div class="container-fluid">
+        <div class="container sheet_card">
 
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/welcome">Tablica</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Lista kart postaci</li>
-            </ol>
-        </nav>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/welcome">Tablica</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Lista kart postaci</li>
+                </ol>
+            </nav>
 
-        <% _.each(characters, function (character) { %>
-            <div class="card ">
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col col-6">
-                            <ul class="nav nav-pills card-header-pills">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/sheet/show/<%= character.id %>">
-                                        <%= character.name %>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col col-6">
-                            <ul class="nav nav-pills card-header-pills float-right">
-                                <li class="nav-item">
-                                    <a class="nav-link btn-sm btn-outline-danger"
-                                       href="/sheet/remove/<%= character.id %>">Kasuj</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col col-6">
-                            <p>
-                                Klasa:
-                                <%= character.classes %>
-                            </p>
-                            <p>
-                                Poziom:
-                                <%= character.level %>
-                            </p>
-                        </div>
-
-                        <div class="col col-6">
-                            <p>
-                                Rasa:
-                                <%= character.race %>
-                            </p>
-                            <p>
-                                Charakter:
-                                <%= character.character %>
-                            </p>
+            <% _.each(characters, function (character) { %>
+                <div class="card ">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col col-6">
+                                <ul class="nav nav-pills card-header-pills">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/sheet/show/<%= character.id %>">
+                                            <%= character.name %>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col col-6">
+                                <ul class="nav nav-pills card-header-pills float-right">
+                                    <li class="nav-item">
+                                        <a class="nav-link btn-sm btn-outline-danger" href="/sheet/remove/<%= character.id %>">Kasuj</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col col-6">
+                                <p>
+                                    Klasa:
+                                    <%= character.classes %>
+                                </p>
+                                <p>
+                                    Poziom:
+                                    <%= character.level %>
+                                </p>
+                            </div>
+
+                            <div class="col col-6">
+                                <p>
+                                    Rasa:
+                                    <%= character.race %>
+                                </p>
+                                <p>
+                                    Charakter:
+                                    <%= character.character %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+                <% }) %>
 
-            </div>
-        <% }) %>
-
-        <hr>
-        <a href="/sheet/new">Dodaj nową...</a>
+                    <hr>
+                    <a href="/sheet/new">Dodaj nową...</a>
+        </div>
     </div>
-</div>

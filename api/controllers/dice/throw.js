@@ -1,17 +1,17 @@
 module.exports = {
 
-  friendlyName: '.',
+    friendlyName: '.',
 
-  description: '.',
+    description: '.',
 
-  exits: {
-    success: {
-      viewTemplatePath: 'pages/dice',
-      description: '.'
+    exits: {
+        success: {
+            viewTemplatePath: 'pages/dice',
+            description: '.'
+        },
     },
-  },
 
-  fn: async function (inputs, exits) {
-    return exits.success();
-  }
+    fn: async function(inputs, exits) {
+        return exits.success();
+    }
 };

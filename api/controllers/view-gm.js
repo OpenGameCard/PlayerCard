@@ -1,27 +1,27 @@
 module.exports = {
 
 
-  friendlyName: 'View gm',
+    friendlyName: 'View gm',
 
 
-  description: 'Display "Gm" page.',
+    description: 'Display "Gm" page.',
 
 
-  exits: {
+    exits: {
 
-    success: {
-      viewTemplatePath: 'pages/gm'
+        success: {
+            viewTemplatePath: 'pages/gm'
+        }
+
+    },
+
+
+    fn: async function() {
+
+        // Respond with view.
+        return {};
+
     }
-
-  },
-
-
-  fn: async function () {
-
-    // Respond with view.
-    return {};
-
-  }
 
 
 };
