@@ -10,7 +10,7 @@
         "@sailshq/socket.io-redis": "^5.2.0",
         "@sailshq/upgrade": "^1.0.9",
         "async": "2.1.4",
-        "lodash": "4.17.19",
+        "lodash": "4.17.21",
         "sails": "^1.2.4",
         "sails-hook-apianalytics": "^2.0.3",
         "sails-hook-organics": "^0.16.0",
